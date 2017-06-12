@@ -66,20 +66,31 @@ const app = {
       .querySelector('.dino-name')
       .textContent = dino.name
 
+    if (dino.fav) {
+      item.classList.add('fav')
+    }
+
     item
       .querySelector('button.remove')
       .addEventListener('click', this.removeDino.bind(this))
     item
-      .querySelector('button.remove')
+      .querySelector('button.fav')
       .addEventListener('click', this.favDino.bind(this, dino))
 
     return item
   },
 
-  favDino(ev) {
-    console.log(arguments)
-    const listItem = ev.closest('.dino')
-    listItem.classList.add('fav')
+  favDino(dino, ev) {
+    const listItem = ev.target.closest('.dino')
+    dino.fav = !dino.fav
+
+    if (dino.fav) {
+      listItem.classList.add('fav')
+    } else {
+      listItem.classList.remove('fav')
+    }
+
+    this.save()
   },
 
   removeDino(ev) {
