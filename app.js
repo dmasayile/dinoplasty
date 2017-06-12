@@ -82,8 +82,15 @@ const app = {
     item
       .querySelector('button.move-down')
       .addEventListener('click', this.moveDown.bind(this, dino))
+ item
+      .querySelector('button.edit')
+      .addEventListener('click', this.editDino.bind(this, dino))
 
     return item
+  },
+
+  editDino(dino, ev) {
+    console.log(dino)
   },
 
   moveDown(dino, ev) {
