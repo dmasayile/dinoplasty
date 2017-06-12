@@ -70,6 +70,10 @@ const app = {
 
     item
       .querySelector('.dino-name')
+      .setAttribute('title', dino.name)
+
+    item
+      .querySelector('.dino-name')
       .addEventListener('keypress', this.saveOnEnter.bind(dino))
 
     if (dino.fav) {
