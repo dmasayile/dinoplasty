@@ -66,6 +66,10 @@ const app = {
       .querySelector('.dino-name')
       .textContent = dino.name
 
+    item
+      .querySelector('.dino-name')
+      .addEventListener('keypress', this.saveOnEnter.bind(dino))
+
     if (dino.fav) {
       item.classList.add('fav')
     }
@@ -82,15 +86,20 @@ const app = {
     item
       .querySelector('button.move-down')
       .addEventListener('click', this.moveDown.bind(this, dino))
- item
+    item
       .querySelector('button.edit')
       .addEventListener('click', this.editDino.bind(this, dino))
 
     return item
   },
 
+  saveOnEnter(dino, ev) {
+    if (ev.key === 'Enter')
+    this.editDino(dino, ev) 
+  },
+
   editDino(dino, ev) {
-    const listItem = ev.target.closest('.dino')
+    const listItem = listItem.querySelector('.edit.button')
     const nameField = listItem.querySelector('dino.name')
 
     const btn = ev.currentTarget
